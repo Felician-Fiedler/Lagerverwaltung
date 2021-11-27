@@ -3,7 +3,7 @@
  * Beschreiben Sie hier die Klasse Lager.
  * 
  * @author Felician 
- * @version 27.11.2021
+ * @version 27.11.2021, Version 0.0.1
  */
 
 import Liste.*;
