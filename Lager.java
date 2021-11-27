@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse Lager.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Felician 
+ * @version 27.11.2021
  */
 
 import Liste.*;
