@@ -1,33 +1,45 @@
-
 /**
- * Beschreiben Sie hier die Klasse Artikel.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * Artikel = eine Europalette mit dem Namen als Inhalt
  */
 public class Artikel
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
+    
+    private String Name;
+    private int Artikelnummer;
+    private int Kundennummer;
+    
     /**
-     * Konstruktor für Objekte der Klasse Artikel
+     * Ein neues Objekt vom Typ Artikel wird erschaffen. 
+     * 
+     * @param pName der Name vom Typ String 
+     * @param pArtikelnummer die Artikelnummer vom Typ int 
+     * @param pKundennummer die Kundennummer vom Typ int 
      */
-    public Artikel()
+    public Artikel(String pName, int pArtikelnummer, int pKundennummer)
     {
-        // Instanzvariable initialisieren
-        x = 0;
+        Name = pName;
+        Artikelnummer = pArtikelnummer;
+        Kundennummer = pKundennummer;
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * Der Name des Objekts wird zurückgeliefert.
      */
-    public int beispielMethode(int y)
-    {
-        // tragen Sie hier den Code ein
-        return x + y;
+    public String getName() {
+        return Name;
+    }
+    
+    /**
+     * Die Artikelnummer des Objekts wird zurückgeliefert.
+     */
+    public int getArtikelnummer() {
+        return Artikelnummer;
+    }
+    
+    /**
+     * Die Kundennummer des Objekts wird zurückgeliefert.
+     */
+    public int getKundennummer() {
+        return Kundennummer;
     }
 }

@@ -13,14 +13,14 @@ public class Lager
 {
     /**
      * Maximale Anzahl von Lagerflaechen im Lagerplatz.
-     */
+     *
     private static final int MAX_LAGERFLAECHE = 20; // */
     
     /**
      * Eine Liste mit Lagerflächen.
      * 
      * Jedes Element der Liste nimmt einen Artikel auf, der dort gelagert wird.
-     * Für eine bestimmte Artikelsorte (etwa Klohpapier) kann es nur ein Listenelement
+     * Für eine bestimmte Artikelsorte (etwa Klopapier) kann es nur ein Listenelement
      * geben, auf dem diese Artikelsorte gelagert wird.
      * 
      * Die Implementierung dieses Lagers garantiert, dass das Lager nie mehr als
@@ -33,9 +33,9 @@ public class Lager
      */
     public Lager(String pN)
     {
-        Lagerplatz = new List<>();
+        Lagerplatz = new List<Lagerflaeche>();
     }
-
+   
     /**
      * Fuegt dem Lager einen neuen Lagerplatz hinzu.
      * 
@@ -47,7 +47,7 @@ public class Lager
      * @param artikel Typ des Artikel, der auf dem neuen Lagerplatz gelagert wird
      * @param name    beliebiger Name, mit dem der Lagerplatz ansprechbar ist
      */
-    public void LagerplatzHinzufuegen(Artikel artikel, String name)
+    public void LagerplatzHinzufuegen(int pN, int pL, int pH)
     {
         // --- Prüfe, ob die maximale Anzahl von Lagerflaechen schon erreicht ist.
         final int anzahlBelegterLagerflaechen = Lagerplatz.size();
@@ -57,13 +57,12 @@ public class Lager
         
             // --- Suche, ob es für diesen Artikel im Lager schon einen Platz gibt.
             //     Falls ja, dann Fehlermeldung.
-            final String artikelName = artikel.getName();
             final int bestand = bestand(artikelName);
         
              if (bestand >= 0) {
                 // ... so einen Artikel gibt es schon im Lager
                 //     => Fehlermeldung und Abbruch
-                System.out.println("Den Artikel mit Namen " + artikelName + " gibt es schon");
+                System.out.println("Den Artikel mit Namen " + ArtikelName + " gibt es schon");
                 
                 return;
             } // end if
@@ -107,7 +106,9 @@ public class Lager
         } // end for (index ...)
         // ende Implementierung 1 */
         
-        /*/ --- Implementierung 2: entfernt die letzte leere Lagerflaeche
+        /**
+         *   --- Implementierung 2: entfernt die letzte leere Lagerflaeche
+         *
         for (int index = size; index-- > 0;) {
             final Lagerflaeche lagerflaeche = Lagerplatz.get(index);
                 final Stack stack = lagerflaeche.getStack();
@@ -168,9 +169,9 @@ public class Lager
     public Lagerflaeche sucheLagerflaeche(int ean)  {
         Lagerplatz.forEach(lagerflaeche -> {
             final Artikel artikel = lagerflaeche.getArtikel();
-            final String artikelEan = artikel.getEan();
+            final int artikelnummer = artikel.getArtikelnummer();
             
-            if (ean == artikelEan) {
+            if (ean == artikelnummer) {
                 // ... die aktuelle betrachtete Lagerfläche hat einen Artikel mit derselben EAN wie
                 //     der Parameter "EAN" im Funktionsaufruf
                 //     => Lagerflaeche zurückgeben
@@ -197,7 +198,7 @@ public class Lager
      * 
      * @return entweder eine Zahl >= 0, wenn eine Lagerflaeche mit passendem Artikel gefunden wird,
      *         oder -1, wenn so eine Lagerflaeche nicht gefunden wird
-     *
+     */
     public int bestand(String name) {
         Lagerplatz.forEach(lagerflaeche -> {
             final Artikel artikel = lagerflaeche.getArtikel();
@@ -232,13 +233,13 @@ public class Lager
      * 
      * @return entweder eine Zahl >= 0, wenn eine Lagerflaeche mit passendem Artikel gefunden wird,
      *         oder -1, wenn so eine Lagerflaeche nicht gefunden wird
-     *
+     */
     public int bestand(int ean) {
         Lagerplatz.forEach(lagerflaeche -> {
             final Artikel artikel = lagerflaeche.getArtikel();
-            final int artikelEAN = artikel.getEAN();
+            final int artikelnummer = artikel.getArtikelnummer();
             
-            if (ean == artikelEAN) {
+            if (ean == artikelnummer) {
                 // ... die aktuelle betrachtete Lagerfläche hat einen Artikel mit demselben EAN wie
                 //     der Parameter "ean" im Funktionsaufruf
                 //     => Bestand zurückgeben

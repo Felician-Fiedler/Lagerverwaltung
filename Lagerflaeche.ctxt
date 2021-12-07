@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Lagerflaeche
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Lagerflaeche.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=pH\ pL\ pN
+comment1.target=Lagerflaeche(int,\ int,\ int)
+comment10.params=
+comment10.target=int\ getLaenge()
+comment2.params=
+comment2.target=Stack\ generateStack()
+comment3.params=
+comment3.target=boolean\ istLeer()
+comment4.params=pA\ anzahl
+comment4.target=double\ addArtikel(Artikel,\ double)
+comment5.params=pAN\ pKN
+comment5.target=double\ anteilVonArtikel(int,\ int)
+comment5.text=\ public\ int\ getAnteilArtikel(int\ pAN,\ int\ pKN)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ Felder.toFirst();\r\n\ \ \ \ \ \ int\ anteil\ \=\ 0;\r\n\ \ \ \ \ \ int\ wert\ \=\ 0;\r\n\ \ \ \ \ \ \ \ while\ (\!\ this.istLeer())\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ if\ (Felder.getContent()\ \!\=\ null\ &&\ Felder.getContent().first()\ \!\=\ null)\r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (pAN\ \=\=\ Felder.getContent().first().getArtikelnummer()\ &&\ pKN\ \=\=\ Felder.getContent().first().getKundennummer())\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wert\ +\=\ Felder.getContent().getHoehe();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ else\r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (Felder.getLaenge()\ \!\=\ 0)\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ anteil\ \=\ wert\ /\ Felder.getLaenge();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ anteil;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ else\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ 0;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ Felder.next();\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment6.params=anzahl\ pAN\ pKN
+comment6.target=int\ entferne(int,\ int,\ int)
+comment7.params=
+comment7.target=Liste.List\ getAsList()
+comment8.params=
+comment8.target=int\ getNummer()
+comment9.params=
+comment9.target=int\ getHoehe()
+numComments=11

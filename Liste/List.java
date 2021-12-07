@@ -52,7 +52,7 @@ public class List<ContentType> {
     }
 
     /**
-     * Der Inhalt dieses Knotens wird gesetzt.
+     * Der Inhalt dieses Kontens wird gesetzt.
      * 
      * @param pContent das Inhaltsobjekt vom Typ ContentType
      */
@@ -93,8 +93,7 @@ public class List<ContentType> {
   ListNode current;
   
   //Listenindex
-  
-  int index;
+  int laenge;
 
   /**
    * Eine leere Liste wird erzeugt.
@@ -103,7 +102,7 @@ public class List<ContentType> {
     first = null;
     last = null;
     current = null;
-    index = 0;
+    laenge = 0;
   }
 
   /**
@@ -232,6 +231,7 @@ public class List<ContentType> {
         }
 
       }
+      laenge += 1;
     }
   }
 
@@ -258,7 +258,7 @@ public class List<ContentType> {
         last.setNextNode(newNode);
         last = newNode; // Letzten Knoten aktualisieren.
       }
-
+      laenge += 1;
     }
   }
 
@@ -323,6 +323,7 @@ public class List<ContentType> {
       if (this.isEmpty()) {
         last = null;
       }
+      laenge -= 1;
     }
   }
 
@@ -349,4 +350,8 @@ public class List<ContentType> {
     }
   }
   
+  public int getLaenge()
+  {
+    return laenge;
+  }
 }
