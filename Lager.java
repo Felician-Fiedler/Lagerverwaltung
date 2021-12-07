@@ -47,36 +47,11 @@ public class Lager
      * @param artikel Typ des Artikel, der auf dem neuen Lagerplatz gelagert wird
      * @param name    beliebiger Name, mit dem der Lagerplatz ansprechbar ist
      */
-    public void LagerplatzHinzufuegen(int pN, int pL, int pH)
+    public void LagerplatzHinzufuegen( int pL, int pH)
     {
-        // --- Prüfe, ob die maximale Anzahl von Lagerflaechen schon erreicht ist.
-        final int anzahlBelegterLagerflaechen = Lagerplatz.size();
-        if (anzahlBelegterLagerflaechen < MAX_LAGERFLAECHE) {
-            // ... es ist noch Platz im Lagerplatz
-            //     => neue Lagerflaeche hinzufügen
-        
-            // --- Suche, ob es für diesen Artikel im Lager schon einen Platz gibt.
-            //     Falls ja, dann Fehlermeldung.
-            final int bestand = bestand(artikelName);
-        
-             if (bestand >= 0) {
-                // ... so einen Artikel gibt es schon im Lager
-                //     => Fehlermeldung und Abbruch
-                System.out.println("Den Artikel mit Namen " + ArtikelName + " gibt es schon");
-                
-                return;
-            } // end if
-            // ... so einen Artikel gibt es im Lager noch nicht
-            //     => passende, neue Lagerflaeche anlegen
-        
-            // --- neues Listenelement anlegen
-            final Lagerflaeche neueFlaeche = new Lagerflaeche(artikel, name);
-            Lagerplatz.add(neueFlaeche); // neue Lagerflaeche im Lager belegen
-        } else {
-            // ... es ist kein Platz mehr im Lagerplatz
-            //     => Fehlermeldung
-            System.out.println("Alle Lagerflaechen im Lager sind bereits belegt.");
-        } // end else
+        nummer = Lagerplatz.getLaenge() + 1;
+        nL = Lagerflaeche(pH, pL, nummer);
+        Lagerplatz.append(nL);
     } // end method */
     
     /**
@@ -87,14 +62,14 @@ public class Lager
      * Falls so eine Lagerflaeche nicht gefunden wird, dann Fehlermeldung.
      * Es wird maximal eine Lagerflaeche entfernt.
      */
-    public void lagerflaecheEntfernen() {
-        final int size = Lagerplatz.size();
+    public boolean lagerflaecheEntfernen(int pN) {
+        /*final int size = Lagerplatz.getLaenge();
         
         // --- Implementierung 1: entfernt die erste leere Lagerflaeche
         for (int index = 0; index < size; index++) {
             final Lagerflaeche lagerflaeche = Lagerplatz.get(index);
-                final Stack stack = lagerflaeche.getStack();
-                final int bestand = stack.size();
+                final Stack stack = lagerflaeche.getContent();
+                final int bestand = stack.getHoehe();
                 
                 if (0 == bestand) {
                     // ... aktuelle Lagerflaeche ist leer
@@ -123,6 +98,24 @@ public class Lager
                 }
         } // end for (index ...)
         // ende Implementierung 2 */
+        Lagerplaetze.toFirst();
+        while (Lagerplaetze.getContent() != null)
+        {
+            if (Lagerplaetze.getContent().getNummer() == pN)
+            {
+                if (Lagerplaetze.getContent().istLeer())
+                {
+                    Lagerplaetze.remove();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            Lagerplaetze.next();
+        }
+        return false;
     } // end method */
     
     /**
@@ -136,56 +129,20 @@ public class Lager
      * @return Lagerflaeche mit passendem Artikel,
      *         oder null, wenn so eine Lagerflaeche nicht existiert
      */
-    public Lagerflaeche sucheLagerflaeche(String name)  {
-        Lagerplatz.forEach(lagerflaeche -> {
-            final Artikel artikel = lagerflaeche.getArtikel();
-            final String artikelName = artikel.getName();
-            
-            if (name.equals(artikelName)) {
-                // ... die aktuelle betrachtete Lagerfläche hat einen Artikel mit demselben Namen wie
-                //     der Parameter "name" im Funktionsaufruf
-                //     => Lagerflaeche zurückgeben
-                return lagerflaeche;
-            } // end if
-        });
-        // ... es wurde kein Artikel mit passenden Namen gefunden
-        
-        System.out.println("Lagerfläche für Artikel mit Namen " + name + " nicht vorhanden");
-        
-        return null;
-    } // end method */
-    
-    /**
-     * Sucht eine Lagerflaeche anhand der Artikelnummer (EAN).
-     * 
-     * Falls so eine Lagerflaeche existiert, dann wird diese zurückgegeben.
-     * Falls so eine Lagerflaeche nicht existiert, dann Fehlermeldung.
-     * 
-     * @param ean des Artikels, für den die Lagerflaeche gesucht wird.
-     * 
-     * @return Lagerflaeche mit passendem Artikel,
-     *         oder null, wenn so eine Lagerflaeche nicht existiert
-     */
-    public Lagerflaeche sucheLagerflaeche(int ean)  {
-        Lagerplatz.forEach(lagerflaeche -> {
-            final Artikel artikel = lagerflaeche.getArtikel();
-            final int artikelnummer = artikel.getArtikelnummer();
-            
-            if (ean == artikelnummer) {
-                // ... die aktuelle betrachtete Lagerfläche hat einen Artikel mit derselben EAN wie
-                //     der Parameter "EAN" im Funktionsaufruf
-                //     => Lagerflaeche zurückgeben
-                return lagerflaeche;
-            } // end if
-        });
-        // ... es wurde kein Artikel mit passender EAN gefunden
-        
-        System.out.println("Lagerfläche für Artikel mit EAN " + ean + " nicht vorhanden");
-        
-        return null;
-    } // end method */
-    
-    
+    public int sucheLagerflaeche(int pAN, int pKN)  {
+        boolean run = false;
+        int flaeche =- 1;
+        Lagerplatz.toFirst();
+        while (! run && Lagerplatz.getContent() != null)
+        {
+            if (Lagerplatz.getContent().sucheArtikel(pAN, pKN) != 0)
+            {
+                flaeche = Lagerplatz.getContent().getNummer();
+            }
+            Lagerplatz.next();
+        }
+        return flaeche;
+    } // end method */  
     /**
      * Sucht anhand eines Artikelnames nach einer Lagerflaeche, wo dieser gelagert wird.
      * 
@@ -234,26 +191,39 @@ public class Lager
      * @return entweder eine Zahl >= 0, wenn eine Lagerflaeche mit passendem Artikel gefunden wird,
      *         oder -1, wenn so eine Lagerflaeche nicht gefunden wird
      */
-    public int bestand(int ean) {
+    public int suche(int ean, int pKN) {
         Lagerplatz.forEach(lagerflaeche -> {
-            final Artikel artikel = lagerflaeche.getArtikel();
+            
             final int artikelnummer = artikel.getArtikelnummer();
             
             if (ean == artikelnummer) {
                 // ... die aktuelle betrachtete Lagerfläche hat einen Artikel mit demselben EAN wie
                 //     der Parameter "ean" im Funktionsaufruf
                 //     => Bestand zurückgeben
-                final Stack stack = lagerflaeche.getStack();
-                final int bestand = stack.size();
+                final Stack stack = lagerflaeche.getContent();
+                final int bestand = stack.getHoehe();
                 
                 return bestand;
             } // end if
         });
         // ... es wurde kein Artikel mit passender EAN gefunden
-        
-        System.out.println("Artikel mit EAN " + ean + " nicht vorhanden");
-        
-        return -1;
+                return -1;
     } // end method */
-}
+    public int suche(int pAN, pKN)
+    {
+        Lagerplaetze.toFirst();
+        
+        while (Lagerplaetze.getContent() != null)
+        {
+            Lagerplaetze.getContent().toFirst();
+        
+            while (Lagerplaetze.getContent().getContent() != null)
+            {
+                Lagerplaetze
+                Lagerplatze.getContent().next();
+            }
+            Lagerplatze.next();
+        }
+    }
 
+}

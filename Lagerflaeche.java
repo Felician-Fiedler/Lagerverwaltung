@@ -1,4 +1,3 @@
-
 import Liste.*;
 /**
  * Beschreiben Sie hier die Klasse Lagerflaeche.
@@ -130,12 +129,11 @@ public class Lagerflaeche
             Felder.next();
         }
     }*/
-    public double anteilVonArtikel(int pAN, int pKN)
+    public double sucheArtikel(int pAN, int pKN)
     {
         if (! this.istLeer())
         {
             double anteil;
-            int len = Felder.getLaenge();
             int ges = 0;
             Felder.toFirst();
             while (Felder.getContent() != null && Felder.getContent().first() != null)
@@ -146,7 +144,7 @@ public class Lagerflaeche
                 }
                 Felder.next();
             }
-            anteil = ges / len;
+            anteil = ges;
             return anteil;
         }
         else

@@ -1,16 +1,14 @@
 #BlueJ class context
-comment0.target=Artikel
-comment0.text=\r\n\ Artikel\ \=\ eine\ Europalette\ mit\ dem\ Namen\ als\ Inhalt\r\n
-comment1.params=pName\ pArtikelnummer\ pKundennummer
-comment1.target=Artikel(java.lang.String,\ int,\ int)
-comment1.text=\r\n\ Ein\ neues\ Objekt\ vom\ Typ\ Artikel\ wird\ erschaffen.\ \r\n\ \r\n\ @param\ pName\ der\ Name\ vom\ Typ\ String\ \r\n\ @param\ pArtikelnummer\ die\ Artikelnummer\ vom\ Typ\ int\ \r\n\ @param\ pKundennummer\ die\ Kundennummer\ vom\ Typ\ int\ \r\n
+comment0.params=pName\ pArtikelnummer\ pKundennummer
+comment0.target=Artikel(java.lang.String,\ int,\ int)
+comment0.text=\r\n\ Ein\ neues\ Objekt\ vom\ Typ\ Artikel\ wird\ erschaffen.\ \r\n\ \r\n\ @param\ pName\ der\ Name\ vom\ Typ\ String\ \r\n\ @param\ pArtikelnummer\ die\ Artikelnummer\ vom\ Typ\ int\ \r\n\ @param\ pKundennummer\ die\ Kundennummer\ vom\ Typ\ int\ \r\n
+comment1.params=
+comment1.target=java.lang.String\ getName()
+comment1.text=\r\n\ Der\ Name\ des\ Objekts\ wird\ zur\u00FCckgeliefert.\r\n
 comment2.params=
-comment2.target=java.lang.String\ getName()
-comment2.text=\r\n\ Der\ Name\ des\ Objekts\ wird\ zur\u00FCckgeliefert.\r\n
+comment2.target=int\ getArtikelnummer()
+comment2.text=\r\n\ Die\ Artikelnummer\ des\ Objekts\ wird\ zur\u00FCckgeliefert.\r\n
 comment3.params=
-comment3.target=int\ getArtikelnummer()
-comment3.text=\r\n\ Die\ Artikelnummer\ des\ Objekts\ wird\ zur\u00FCckgeliefert.\r\n
-comment4.params=
-comment4.target=int\ getKundennummer()
-comment4.text=\r\n\ Die\ Kundennummer\ des\ Objekts\ wird\ zur\u00FCckgeliefert.\r\n
-numComments=5
+comment3.target=int\ getKundennummer()
+comment3.text=\r\n\ Die\ Kundennummer\ des\ Objekts\ wird\ zur\u00FCckgeliefert.\r\n
+numComments=4
